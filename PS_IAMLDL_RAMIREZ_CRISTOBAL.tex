@@ -1,0 +1,220 @@
+%% 
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+
+\documentclass[]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0pt}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%\usepackage{lineno}
+
+\journal{SoftwareX}
+
+\begin{document}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Pokemon: Busqueda de tipo}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author[label1]{Cristobal Ramirez}
+\address[label1]{Estudiante Ingenieria Civil Informatica,cristohbal.ramirez1501@alumnos.ubiobio.cl}
+
+\begin{abstract}
+%% Text of abstract 
+
+
+\textit{En el área de los videojuegos y su amplia gama de variedades, se distingue por su antigüedad e importancia el juego llamado Pokémon. Desde hace varios años, ha cautivado a cientos de jugadores con su jugabilidad y diversidad de Pokémon. Cada uno de estos Pokémon posee habilidades y estadísticas únicas que permiten formar múltiples equipos diferentes. Además, se pueden buscar coincidencias entre algunas estadísticas para predecir o identificar patrones concretos. Este proyecto se enfocará en encontrar el tipo de un Pokémon basado en sus estadísticas base.}
+\end{abstract}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+Pokemon \sep Estadisticas
+
+%% PACS codes here, in the form: \PACS code \sep code
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+
+\section*{Metadata}
+
+
+\begin{table}[!h]
+\begin{tabular}{|l|p{6.5cm}|p{6.5cm}|}
+\hline
+\textbf{Nr.} & \textbf{Descripción} & \textbf{Valores} \\
+\hline
+C1 &Versión del codigo & v1.0 \\
+\hline
+C2 & Link del codigo & \url{https://colab.research.google.com/drive/1Tx8ApAYpaGhAfqP1yoUTHqSgNMKwwtYD?usp=sharing} \\
+\hline
+C4 & Sistema de versiones de codigo usado & ninguno. \\
+\hline
+    C5 & Softwware,lenguajes y herramientas utilizadas & Python,Visual Studio Code. \\
+\hline
+C6 & Requerimientos de ejecución del codigo & \textit{dataset correspondiente, google collab}.\\
+\hline
+C7 & Link al dataset & \url{https://www.kaggle.com/datasets/rounakbanik/pokemon} \\
+\hline
+C9 & correo de soporte & \url{cristobal.ramirez1501@alumnos.ubiobio.cl}\\
+\hline
+\end{tabular}
+\caption{Metadata del codigo}
+\label{codeMetadata} 
+\end{table}
+
+
+
+
+
+
+\section{Motivación}
+La motivación para hacer este proyecto fue probar los niveles de busqueda y predicción que pueden realizar los modelos de \textit{Machine Learning} y los resultados que estos pueden determinar en base a datos recopilados.
+
+\section{Descripción del código}
+
+El software implementado y creado fue diseñado con un modelo de redes neuronales  e implementado en el lenguaje de programación python.
+
+
+ \subsection{Funcionalidad del código}
+
+como se explica con anterioridad el codigo esta implementado en el lenguaje de programación python, y funciona de la siguiente manera:
+
+\begin{itemize}
+    \item Se comienza declarando todas las librerías que utilizaremos a lo largo del proyecto. De esta manera, se evitan problemas con las variables, ya que todas las librerías se llaman al inicio del proyecto.
+    \item Como continuación, importamos nuestro dataset para trabajar con él, filtrando los valores que se utilizarán , siendo el caso de las estadísticas \textit{vida, ataque, defensa, ataque especial, defensa especial, velocidad y peso} para luego normalizarla con el fin de un mejor uso de estas. Esto nos permitirá manejar de manera más efectiva el dataset.
+    \item Una vez filtrado el dataset, seleccionamos nuestro conjunto de datos de entrenamiento y nuestros datos de prueba, con una distribución del 70\% y 30\%, respectivamente.
+    \item Procedemos con la compilación del modelo. En este caso, utilizaremos el compilador Adam con una tasa de aprendizaje de 0.0001, dado que la varianza de estos datos puede ser considerable, y queremos que el modelo sea lo más preciso posible.
+    \item Una vez completada la compilación del modelo, lo entrenamos. En esta ocasión, y dado que disponemos de un computador de buen calibre, utilizamos un total de 300 epochs y un batch size de 10. Estos parámetros pueden variar dependiendo del computador disponible.
+    \item Tras entrenar el modelo, lo evaluamos para conocer su porcentaje de error y la precisión obtenida. Posteriormente, se gráfica dichos porcentajes para cada epoch.
+    \item Para concluir, creamos una matriz de confusión que mostrará los datos predichos en esta matriz.
+\end{itemize}
+  
+
+
+\section{Resultados}
+Los resultados obtenidos al ejecutar este código no son muy alentadores, ya que muestra una tasa de precisión de aproximadamente un  20\%, un valor demasiado bajo como para considerar este proyecto como válido.
+
+Para identificar la causa de esta baja tasa de precisión, podemos considerar las siguientes opciones:
+
+\begin{itemize}
+    \item Variabilidad de los datos muy amplia y poca claridad en la selección de los mismos.
+    \item El modelo utilizado no se ajusta adecuadamente a lo que se intentaba obtener.
+    \item Algún fallo al momento de obtener los datos.
+    \item Insuficiente uso de recursos o tiempo para la correcta ejecución del modelo.
+\end{itemize}
+
+
+
+\section{Conclusiones}
+Como manera de concluir este proyecto, se puede inferir que, aunque la idea planteada desde un inicio era muy buena, al momento de implementarla, se demostró que los niveles de trabajo utilizados pudieron no haber sido suficientes para validar este modelo.
+
+\subsection{Posible Investigación futura}
+
+ Para una posible investigación futura, se deja planteada la idea de usar otro modelo de \textit{machine learning}, o utilizar una cantidad distinta de variables para observar si se mantiene una tendencia o si se empiezan a obtener otras conductas en base a las variables usadas.
+
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% References:
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%%  \bibliographystyle{elsarticle-num} 
+%%  \bibliography{<your bibdatabase>}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+\begin{thebibliography}{00}
+%% \bibitem{label}
+%% Text of bibliographic item
+
+\href{https://www.kaggle.com/datasets/rounakbanik/pokemon}{The Complete Pokemon Dataset
+}
+
+\end{thebibliography}
+
+
+
+
+
+
+\end{document}
+\endinput
+%%
+%% End of file `SoftwareX_article_template.tex'.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
